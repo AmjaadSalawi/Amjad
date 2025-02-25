@@ -1,0 +1,100 @@
+<!-- <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // تأمين البيانات المدخلة
+    $name    = htmlspecialchars(trim($_POST['name']));
+    $email   = htmlspecialchars(trim($_POST['email']));
+    $message = htmlspecialchars(trim($_POST['message']));
+
+    // تحديد البريد المستقبل (gmail الخاص بك)
+    $to = "AmjaadSalawi@gmail.com";
+    $subject = "New Contact Form Message";
+
+    // بناء محتوى الرسالة
+    $body = "Name: $name\n";
+    $body .= "Email: $email\n\n"; 
+    $body .= "Message:\n$message";
+
+    // ترويسة الرسالة
+    $headers = "From: $email\r\n" .
+               "Reply-To: $email\r\n" .
+               "X-Mailer: PHP/" . phpversion();
+
+    // إرسال البريد
+    if (mail($to, $subject, $body, $headers)) {
+        echo "Message sent successfully!";
+    } else {
+        echo "There was an error sending the message.";
+    }
+} else {
+    echo "Please submit the form.";
+}
+?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>AMJAAD</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><a href="index.html">AMJAAD</a></div>
+        <ul class="social-icons">
+            <!-- <li><a href="home.html"> <i class="fa-brands fa-whatsapp"></i> </a></li> -->
+            <li><a href="https://github.com/AmjaadSalawi"> <i class="fa-brands fa-github"></i> </a></li>
+            <li><a href="www.linkedin.com/in/amjaad-salawi"> <i class="fa-brands fa-linkedin"></i> </a></li>
+        </ul>
+    </header>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="active"><a href="index.html"><i class="fas fa-home"></i></a></li>
+            <li><a href="about.html"> <i class="fas fa-user"></i> </a></li>
+            <li><a href="skills.html"><i class="fas fa-code"></i></a></li>
+            <li><a href="projects.html"><i class="fas fa-laptop"></i></a></li>
+            <li><a href="contact.html"><i class="fas fa-phone"></i></a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <section class="contact-section">
+          <h2>CONTACT US</h2>
+          
+          <!-- بطاقتان للمعلومات (إيميل - هاتف) -->
+          <div class="contact-cards">
+            <div class="contact-card">
+              <h3>Email</h3>
+              <p>AmjaadSalawi@gmail.com</p>
+            </div>
+            <div class="contact-card">
+              <h3>Phone</h3>
+              <p>+966 557969241</p>
+            </div>
+          </div>
+          
+          <!-- النموذج -->
+          <div class="contact-form-container">
+            <form class="contact-form" action="#" method="post">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" required />
+              
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Your Email" required />
+              
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+              
+              <button type="submit" class="btn">Send Email</button>
+            </form>
+          </div>
+          
+        </section>
+      </main>
+    
+    
+</body>
+</html>
+

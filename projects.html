@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>AMJAAD</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><a href="index.html">AMJAAD</a></div>
+        <ul class="social-icons">
+            <!-- <li><a href="home.html"> <i class="fa-brands fa-whatsapp"></i> </a></li> -->
+            <li><a href="https://github.com/AmjaadSalawi"> <i class="fa-brands fa-github"></i> </a></li>
+            <li><a href="www.linkedin.com/in/amjaad-salawi"> <i class="fa-brands fa-linkedin"></i> </a></li>
+        </ul>
+    </header>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="active"><a href="index.html"><i class="fas fa-home"></i></a></li>
+            <li><a href="about.html"> <i class="fas fa-user"></i> </a></li>
+            <li><a href="skills.html"><i class="fas fa-code"></i></a></li>
+            <li><a href="projects.html"><i class="fas fa-laptop"></i></a></li>
+            <li><a href="contact.html"><i class="fas fa-phone"></i></a></li>
+        </ul>
+    </aside>
+
+    <h2 style="text-align: center;">PROJECTS</h2>
+    <div class="tabs">
+        <div class="tab active" onclick="filterProjects('all')">All</div>
+        <div class="tab" onclick="filterProjects('websites')">Websites</div>
+        <div class="tab" onclick="filterProjects('Ecommerce')">Ecommerce</div>
+        <!-- <div class="tab" onclick="filterProjects('data')">Data Analysis</div> -->
+    </div>
+    <div class="projects-container" id="projects"></div>
+    <script>
+        const projects = [
+            { title: "Weather", category: "websites", img: "weather.png", site: "https://amjaadsalawi.github.io/your-city-weather/", code: "https://github.com/AmjaadSalawi/your-city-weather" },
+            { title: "Burgur", category: "websites", img: "burger.png", site: "https://amjaadsalawi.github.io/Burger/", code: "https://github.com/AmjaadSalawi/Burger" },
+            { title: "Ecommerce", category: "Ecommerce", img: "logo.png", site: "https://github.com/AmjaadSalawi/ecommerce-website", code: "https://github.com/AmjaadSalawi/ecommerce-website" },
+            // { title: "Ecommerce", category: "data", img: "logo.png", site: "#", code: "#" },
+            // { title: "Coffee", category: "websites", img: "msc.png", site: "#", code: "#" }
+        ];
+
+        function filterProjects(category) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`.tab[onclick="filterProjects('${category}')"]`).classList.add('active');
+            
+            const container = document.getElementById("projects");
+            container.innerHTML = "";
+            projects.filter(p => category === 'all' || p.category === category).forEach(p => {
+                container.innerHTML += `
+                    <div class="project-card">
+                        <img src="${p.img}" alt="${p.title}">
+                        <h3>${p.title}</h3>
+                        <a href="${p.site}" target="_blank">View Site</a>
+                        <a href="${p.code}" target="_blank">GitHub Code</a>
+                    </div>
+                `;
+            });
+        }
+
+        filterProjects('all');
+    </script>
+</body>
+</html>
